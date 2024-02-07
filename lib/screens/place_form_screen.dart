@@ -6,6 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/great_places.dart';
+import '../widgets/coordenadas.dart';
 import '../widgets/image_input.dart';
 
 // Tela para adicionar um novo lugar.
@@ -20,6 +21,8 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
   final _titleController = TextEditingController(); // Controlador para o campo de texto do título.
   File? _pickedImage; // Imagem selecionada.
   LatLng? _pickedPosition; // Posição selecionada no mapa.
+  String _latitude = "";
+  String _longitude = "";
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,18 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
                   children: [
                     TextField(
                       controller: _titleController, // Controlador para o campo de texto do título.
-                      decoration: const InputDecoration(labelText: "Titulo"), // Rótulo do campo de texto.
+                      decoration: const InputDecoration(
+                        labelText: "Titulo",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.zero,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.zero,
+                          borderSide: BorderSide(
+                            width: 2, // Espessura da borda
+                          ),
+                        ),
+                      ), // Rótulo do campo de texto.
                       onChanged: (text) {
                         setState(() {});
                       },
@@ -46,6 +60,13 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
                     const SizedBox(height: 10),
                     LocationInput(
                       onSelectPosition: _selectPosition, // Widget para selecionar a posição no mapa.
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(color: Colors.blue.shade100 ,border: Border.all(width: 1, color: Colors.indigo)),
+                      child: Coordenadas(latitude: _pickedPosition?.latitude, longitude: _pickedPosition?.longitude,)
                     ),
                   ],
                 ),
@@ -62,7 +83,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
               shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(0))), // Define a forma do botão.
             ),
-          )
+          ),
         ],
       ),
     );

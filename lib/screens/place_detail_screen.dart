@@ -1,4 +1,5 @@
 import 'package:favorite_place/screens/map_screen.dart';
+import 'package:favorite_place/widgets/coordenadas.dart';
 import 'package:flutter/material.dart';
 
 import '../models/place.dart';
@@ -28,13 +29,24 @@ class PlaceDetailScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          Text(
-            place.location!.address!, // Exibe o endereço do lugar.
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 20,
-              color: Colors.grey,
+          Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Text(
+              place.location!.address!, // Exibe o endereço do lugar.
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.grey,
+              ),
             ),
+          ),
+          const SizedBox(height: 20),
+          Container(
+            margin:const EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.all(20),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(color: Colors.blue.shade100 ,border: Border.all(width: 1, color: Colors.indigo)),
+            child: Coordenadas(latitude: place.location?.latitude, longitude: place.location?.longitude,)
           ),
           const SizedBox(height: 10),
           ElevatedButton.icon(

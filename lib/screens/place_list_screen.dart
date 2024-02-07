@@ -12,7 +12,7 @@ class PlaceListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Lugares Favoritos"), // Título da barra de aplicativos.
+        title: const Text("Lugares Salvos"), // Título da barra de aplicativos.
         actions: [
           // Ícone de adição para adicionar novos lugares.
           IconButton(

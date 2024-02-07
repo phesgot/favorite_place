@@ -3,7 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 
 // Chave de API do Google Maps.
-const googleApiKey = 'SUA_CHAVE_DE_API_DO_GOOGLE_MAPS';
+const googleApiKey = 'AIzaSyCnXUwfydia2qTaXMDGAxFDHWisjRrNyL4';
 
 // Classe utilitária para operações relacionadas à localização.
 class LocationUtil {

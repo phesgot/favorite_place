@@ -71,8 +71,9 @@ class _ImageInputState extends State<ImageInput> {
             padding: const EdgeInsets.all(8.0),
             child: TextButton.icon(
               onPressed: _takePicture, // Chama o método para tirar uma foto.
-              icon: const Icon(Icons.camera), // Ícone da câmera.
-              label: const Text("Tirar Foto", style: TextStyle(color: Colors.indigo)), // Texto do botão.
+              icon: const Icon(Icons.camera_alt, size: 50,), // Ícone da câmera.
+              label: const Text("Tirar Foto", style: TextStyle(color: Colors.indigo, fontSize: 18, fontWeight: FontWeight.w900)
+              ), // Texto do botão.
             ),
           ),
         ),
