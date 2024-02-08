@@ -54,7 +54,8 @@ class _ImageInputState extends State<ImageInput> {
           width: 180,
           height: 100,
           decoration: BoxDecoration(
-            border: Border.all(width: 1, color: Colors.grey),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(width: 2, color: Colors.white),
           ),
           alignment: Alignment.center,
           child: _storedImage != null
@@ -63,17 +64,24 @@ class _ImageInputState extends State<ImageInput> {
             width: double.infinity,
             fit: BoxFit.cover,
           )
-              : const Text("Nenhuma Imagem!"), // Mensagem exibida se nenhuma imagem foi capturada.
+              : const Text("Nenhuma Imagem!", style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w700),), // Mensagem exibida se nenhuma imagem foi capturada.
         ),
         // Botão para tirar uma foto.
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextButton.icon(
-              onPressed: _takePicture, // Chama o método para tirar uma foto.
-              icon: const Icon(Icons.camera_alt, size: 50,), // Ícone da câmera.
-              label: const Text("Tirar Foto", style: TextStyle(color: Colors.indigo, fontSize: 18, fontWeight: FontWeight.w900)
-              ), // Texto do botão.
+          child: SizedBox(
+            height: 100,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: TextButton.icon(
+                style: ButtonStyle(
+                  shape: MaterialStatePropertyAll<OutlinedBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                  backgroundColor: const MaterialStatePropertyAll(Colors.purple),
+                ),
+                onPressed: _takePicture, // Chama o método para tirar uma foto.
+                icon: const Icon(Icons.camera_alt, size: 50, color: Colors.white), // Ícone da câmera.
+                label: const Text("Tirar Foto", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w900)
+                ), // Texto do botão.
+              ),
             ),
           ),
         ),

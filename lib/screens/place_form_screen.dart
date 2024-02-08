@@ -38,16 +38,22 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
                 child: Column(
                   children: [
                     TextField(
+                      style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+                      cursorColor: Colors.white,
+                      cursorWidth: 8,
+                      cursorOpacityAnimates: true,
                       controller: _titleController, // Controlador para o campo de texto do título.
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
+                        labelStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
                         labelText: "Titulo",
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.zero,
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.zero,
-                          borderSide: BorderSide(
-                            width: 2, // Espessura da borda
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Colors.white,
+                            width: 4, // Espessura da borda
                           ),
                         ),
                       ), // Rótulo do campo de texto.
@@ -62,12 +68,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
                       onSelectPosition: _selectPosition, // Widget para selecionar a posição no mapa.
                     ),
                     const SizedBox(height: 20),
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(color: Colors.blue.shade100 ,border: Border.all(width: 1, color: Colors.indigo)),
-                      child: Coordenadas(latitude: _pickedPosition?.latitude, longitude: _pickedPosition?.longitude,)
-                    ),
+                      Coordenadas(latitude: _pickedPosition?.latitude, longitude: _pickedPosition?.longitude),
                   ],
                 ),
               ),
@@ -75,8 +76,8 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
           ),
           ElevatedButton.icon(
             onPressed: _isValidForm() ? _submitForm : null, // Função chamada ao pressionar o botão de adicionar.
-            icon: const Icon(Icons.add), // Ícone do botão.
-            label: const Text("Adicionar", style: TextStyle(color: Colors.black)), // Texto do botão.
+            icon: const Icon(Icons.add, size: 30,), // Ícone do botão.
+            label: const Text("Adicionar", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16)), // Texto do botão.
             style: ButtonStyle(
               elevation: const MaterialStatePropertyAll(0), // Define a elevação do botão.
               tapTargetSize: MaterialTapTargetSize.shrinkWrap, // Define o tamanho do alvo do toque.

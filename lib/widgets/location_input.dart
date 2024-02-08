@@ -72,14 +72,19 @@ class _LocationInputState extends State<LocationInput> {
           height: 170,
           width: double.infinity,
           alignment: Alignment.center,
-          decoration: BoxDecoration(border: Border.all(width: 1, color: Colors.grey)),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+            width: 4,
+            color: Colors.white,
+          )),
           child: _previewImageUrl == null
-              ? const Text("Localização não informada")
+              ? const Text("Localização não informada!", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700))
               : Image.network(
-            _previewImageUrl!,
-            fit: BoxFit.cover,
-            width: double.infinity,
-          ),
+                  _previewImageUrl!,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                ),
         ),
         // Linha de botões para obter a localização atual ou selecionar no mapa.
         Row(
@@ -88,14 +93,14 @@ class _LocationInputState extends State<LocationInput> {
             // Botão para obter a localização atual do usuário.
             TextButton.icon(
               onPressed: _getCurrentUserLocation,
-              icon: const Icon(Icons.location_on),
-              label: const Text("Localização Atual", style: TextStyle(color: Colors.indigo)),
+              icon: const Icon(Icons.location_on, color: Colors.white,),
+              label: const Text("Localização Atual", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
             ),
             // Botão para selecionar uma posição no mapa.
             TextButton.icon(
               onPressed: _selectOnMap,
-              icon: const Icon(Icons.map),
-              label: const Text("Selecione no Mapa", style: TextStyle(color: Colors.indigo)),
+              icon: const Icon(Icons.map, color: Colors.white),
+              label: const Text("Selecione no Mapa", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
             ),
           ],
         )

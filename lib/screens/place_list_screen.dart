@@ -35,7 +35,11 @@ class PlaceListScreen extends StatelessWidget {
             : Consumer<GreatPlaces>(
                 // Recria a tela sempre que GreatPlaces mudar.
                 child: const Center(
-                  child: Text('Nenhum local cadastrado!'), // Mensagem exibida se nenhum local estiver cadastrado.
+                  child: Text('Nenhum local cadastrado!',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700)), // Mensagem exibida se nenhum local estiver cadastrado.
                 ),
                 builder: (ctx, greatPlaces, ch) => greatPlaces.itemsCount == 0
                     ? ch! // Exibe a mensagem se não houver lugares cadastrados.
@@ -50,8 +54,12 @@ class PlaceListScreen extends StatelessWidget {
                               greatPlaces.itemByIndex(i).image,
                             ),
                           ),
-                          title: Text(greatPlaces.itemByIndex(i).title), // Título do lugar.
-                          subtitle: Text(greatPlaces.itemByIndex(i).location!.address!), // Endereço do lugar.
+                          title: Text(greatPlaces.itemByIndex(i).title,
+                              style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700)),
+                          // Título do lugar.
+                          subtitle: Text(greatPlaces.itemByIndex(i).location!.address!,
+                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400)),
+                          // Endereço do lugar.
                           onTap: () {
                             // Navega para a tela de detalhes do lugar quando o ListTile é pressionado.
                             Navigator.of(context)

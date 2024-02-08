@@ -30,26 +30,26 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         // Define o tema do aplicativo.
         theme: ThemeData(
+          scaffoldBackgroundColor: Colors.black,
           // Define o tema do app bar.
           appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.black,
-            iconTheme: IconThemeData(color: Colors.white),
-            titleTextStyle: TextStyle(color: Colors.white, fontSize: 16),
+            backgroundColor: Colors.purple,
+            iconTheme: IconThemeData(color: Colors.white, size: 30),
+            titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700),
           ),
           // Define o tema dos botões de texto.
           textButtonTheme: TextButtonThemeData(
             style: ButtonStyle(
-              iconColor: const MaterialStatePropertyAll(Colors.indigo),
-              textStyle: const MaterialStatePropertyAll(TextStyle(color: Colors.indigo)),
+              iconColor: const MaterialStatePropertyAll(Colors.white),
+              textStyle: const MaterialStatePropertyAll(TextStyle(color: Colors.white)),
               overlayColor: MaterialStatePropertyAll(Colors.grey.shade300),
             ),
           ),
           // Define o tema dos botões elevados (botões de destaque).
           elevatedButtonTheme: const ElevatedButtonThemeData(
             style: ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(Colors.amber),
-              iconColor: MaterialStatePropertyAll(Colors.black),
-              textStyle: MaterialStatePropertyAll(TextStyle(color: Colors.black)),
+              backgroundColor: MaterialStatePropertyAll(Colors.purple),
+              iconColor: MaterialStatePropertyAll(Colors.white),
             ),
           ),
         ),

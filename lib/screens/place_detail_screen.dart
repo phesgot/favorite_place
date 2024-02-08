@@ -18,6 +18,7 @@ class PlaceDetailScreen extends StatelessWidget {
         title: Text(place.title), // Título da barra de aplicativo exibindo o título do lugar.
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(
             height: 250,
@@ -28,27 +29,29 @@ class PlaceDetailScreen extends StatelessWidget {
               width: double.infinity,
             ),
           ),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Text(
-              place.location!.address!, // Exibe o endereço do lugar.
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 20,
-                color: Colors.grey,
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Text(
+                      place.location!.address!, // Exibe o endereço do lugar.
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Coordenadas(latitude: place.location?.latitude, longitude: place.location?.longitude),
+                  const SizedBox(height: 10),
+                ],
               ),
             ),
           ),
-          const SizedBox(height: 20),
-          Container(
-            margin:const EdgeInsets.only(left: 20, right: 20),
-            padding: const EdgeInsets.all(20),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(color: Colors.blue.shade100 ,border: Border.all(width: 1, color: Colors.indigo)),
-            child: Coordenadas(latitude: place.location?.latitude, longitude: place.location?.longitude,)
-          ),
-          const SizedBox(height: 10),
           ElevatedButton.icon(
             onPressed: () {
               // Navega para a tela do mapa para visualizar a localização do lugar.
@@ -56,18 +59,19 @@ class PlaceDetailScreen extends StatelessWidget {
                 MaterialPageRoute(
                   fullscreenDialog: true,
                   builder: (ctx) => MapScreen(
-                    isReadOnly: true,
-                    initialLocation: place.location!, // Passa a localização inicial para a tela do mapa.
-                  ),
+                      isReadOnly: true,
+                      initialLocation: place.location! // Passa a localização inicial para a tela do mapa.
+                      ),
                 ),
               );
             },
-            icon: const Icon(Icons.map), // Ícone do botão para visualizar no mapa.
-            label: const Text(
-              "Ver no mapa",
-              style: TextStyle(
-                color: Colors.black,
-              ),
+            icon: const Icon(Icons.map, size: 30,), // Ícone do botão para visualizar no mapa.
+            label: const Text("Ver no mapa", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16)),
+            style: ButtonStyle(
+              elevation: const MaterialStatePropertyAll(0), // Define a elevação do botão.
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap, // Define o tamanho do alvo do toque.
+              shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(0))), // Define a forma do botão.
             ),
           ),
         ],
